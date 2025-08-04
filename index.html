@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FunnelFix - Clicks to Cash in 3 Minutes!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --electric-blue: #007BFF;
+            --fiery-orange: #FF6200;
+            --bright-white: #FFFFFF;
+            --dark-gray: #333333;
+            --light-gray: #F8F9FA;
+            --success-green: #28A745;
+            --warning-yellow: #FFC107;
+            --danger-red: #DC3545;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-gray);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--electric-blue) 0%, #0056CC 100%);
+            color: var(--bright-white);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 123, 255, 0.3);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--bright-white);
+        }
+
+        .logo .fix {
+            color: var(--fiery-orange);
+            font-style: italic;
+        }
+
+        .cta-button {
+            background: var(--fiery-orange);
+            color: var(--bright-white);
+            padding: 12px 24px;
+            border: none;
+            border-radius: 50px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(255, 98, 0, 0.3);
+        }
+
+        .cta-button:hover {
+            background: #E55A00;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 98, 0, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--electric-blue) 0%, #0056CC 100%);
+            color: var(--bright-white);
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero .highlight {
+            color: var(--fiery-orange);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            font-weight: 400;
+            opacity: 0.9;
+        }
+
+        .hero .big-cta {
+            font-size: 1.3rem;
+            padding: 20px 40px;
+            margin: 20px 0;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* Problem Section */
+        .problem {
+            padding: 80px 0;
+            background: var(--light-gray);
+        }
+
+        .problem h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--dark-gray);
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        @media (max-width: 768px) {
+            .problem-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .problem-card {
+            background: var(--bright-white);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .problem-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .problem-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        /* Audit Section */
+        .audit-section {
+            padding: 80px 0;
+            background: var(--bright-white);
+        }
+
+        .audit-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .audit-title {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: var(--dark-gray);
+        }
+
+        .audit-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            color: var(--electric-blue);
+            font-weight: 600;
+        }
+
+        .audit-tool {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .progress-bar {
+            background: #e9ecef;
+            height: 8px;
+            border-radius: 4px;
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, var(--electric-blue), var(--fiery-orange));
+            height: 100%;
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+
+        .question {
+            display: none;
+            text-align: left;
+        }
+
+        .question.active {
+            display: block;
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .question h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--dark-gray);
+        }
+
+        .options {
+            display: grid;
+            gap: 15px;
+        }
+
+        .option {
+            background: var(--bright-white);
+            border: 2px solid #e9ecef;
+            padding: 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .option:hover {
+            border-color: var(--electric-blue);
+            background: #f0f8ff;
+        }
+
+        .option.selected {
+            border-color: var(--fiery-orange);
+            background: #fff5f0;
+        }
+
+        .timer {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: var(--fiery-orange);
+            color: var(--bright-white);
+            padding: 15px 20px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 15px rgba(255, 98, 0, 0.3);
+            z-index: 1000;
+        }
+
+        .score-display {
+            display: none;
+            text-align: center;
+            padding: 40px;
+            background: linear-gradient(135deg, var(--success-green) 0%, #20c997 100%);
+            color: var(--bright-white);
+            border-radius: 15px;
+            margin: 30px 0;
+        }
+
+        .score-number {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .score-text {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+        }
+
+        .personalized-content {
+            display: none;
+            margin-top: 30px;
+            padding: 30px;
+            background: var(--bright-white);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            color: var(--dark-gray);
+            font-weight: 500;
+        }
+
+        .personalized-content h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .personalized-content h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--dark-gray);
+        }
+
+        .personalized-content p {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            color: var(--dark-gray);
+        }
+
+        .personalized-content ol,
+        .personalized-content ul {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--dark-gray);
+        }
+
+        .personalized-content li {
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .action-plan-box {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 5px solid var(--electric-blue);
+            margin-top: 20px;
+        }
+
+        .critical-box {
+            background: #fff5f5;
+            border-left-color: var(--danger-red);
+        }
+
+        .warning-box {
+            background: #fffbf0;
+            border-left-color: var(--warning-yellow);
+        }
+
+        .success-box {
+            background: #f0fff4;
+            border-left-color: var(--success-green);
+        }
+
+        .vip-box {
+            background: linear-gradient(135deg, #fff9e6 0%, #fff3cd 100%);
+            border-left-color: gold;
+        }
+
+        /* Booking Section */
+        .booking-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--dark-gray) 0%, #2c2c2c 100%);
+            color: var(--bright-white);
+            text-align: center;
+        }
+
+        .booking-form {
+            max-width: 500px;
+            margin: 0 auto;
+            background: var(--bright-white);
+            padding: 40px;
+            border-radius: 20px;
+            color: var(--dark-gray);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--electric-blue);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .timer {
+                position: static;
+                margin: 20px auto;
+                display: inline-block;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    Funnel<span class="fix">Fix</span>
+                </div>
+                <a href="#audit" class="cta-button">Take FREE 3-Min Audit</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Your Website is <span class="highlight">BLEEDING MONEY</span><br>Every Single Day!</h1>
+                <p class="subtitle">But here's the crazy part... Most business owners have NO CLUE why their visitors aren't buying!</p>
+                <a href="#audit" class="cta-button big-cta">🔥 STOP THE BLEEDING - Take Your FREE Audit Now! 🔥</a>
+                <p style="margin-top: 20px; font-size: 1.1rem; opacity: 0.9;">
+                    ⏰ Takes just 3 minutes • 💰 Find out why you're losing sales • 🎯 Get your personalized fix plan
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="problem">
+        <div class="container">
+            <h2>Here's What's KILLING Your Sales Right Now...</h2>
+            <div class="problem-grid">
+                <div class="problem-card">
+                    <div class="problem-icon">😤</div>
+                    <h3>Visitors Leave Without Buying</h3>
+                    <p>You're getting traffic, but they bounce faster than a rubber ball. Your website isn't speaking their language!</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">🤔</div>
+                    <h3>Confused Customers = No Sales</h3>
+                    <p>Your visitors don't know what to do next. They're lost, confused, and clicking the back button!</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">💸</div>
+                    <h3>Money Down the Drain</h3>
+                    <p>Every visitor that leaves is money walking out the door. You're literally paying for traffic that doesn't convert!</p>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 50px;">
+                <h3 style="font-size: 1.8rem; color: var(--fiery-orange); font-weight: 700;">
+                    But What If I Told You There's a Simple Fix?
+                </h3>
+                <p style="font-size: 1.2rem; margin-top: 20px;">
+                    In just 3 minutes, you'll discover EXACTLY what's broken and how to fix it!
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Audit Section -->
+    <section id="audit" class="audit-section">
+        <div class="container">
+            <div class="audit-container">
+                <h2 class="audit-title">🎯 Your FREE Funnel Health Audit</h2>
+                <p class="audit-subtitle">Answer 8 quick questions and get your personalized sales fix plan!</p>
+                
+                <div class="timer" id="timer">⏰ 15:00</div>
+                
+                <div class="audit-tool">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    
+                    <div id="auditQuestions">
+                        <!-- Questions will be populated by JavaScript -->
+                    </div>
+                    
+                    <div class="score-display" id="scoreDisplay">
+                        <div class="score-number" id="scoreNumber">0</div>
+                        <div class="score-text" id="scoreText">Your Funnel Health Score</div>
+                        <div class="personalized-content" id="personalizedContent">
+                            <!-- Personalized content based on score -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section id="booking" class="booking-section hidden">
+        <div class="container">
+            <h2 style="font-size: 2.5rem; margin-bottom: 20px;">🚀 Ready to Turn Your Website Into a CASH MACHINE?</h2>
+            <p style="font-size: 1.3rem; margin-bottom: 40px;">Book your FREE Funnel Review Call and let's fix this together!</p>
+            
+            <div class="booking-form">
+                <h3 style="margin-bottom: 30px; color: var(--electric-blue);">Book Your FREE Strategy Call</h3>
+                <form id="bookingForm">
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="website">Website URL</label>
+                        <input type="url" id="website" name="website" placeholder="https://yourwebsite.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="revenue">Monthly Revenue</label>
+                        <select id="revenue" name="revenue">
+                            <option value="">Select Range</option>
+                            <option value="0-1k">$0 - $1,000</option>
+                            <option value="1k-5k">$1,000 - $5,000</option>
+                            <option value="5k-10k">$5,000 - $10,000</option>
+                            <option value="10k-25k">$10,000 - $25,000</option>
+                            <option value="25k+">$25,000+</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="challenge">Biggest Challenge</label>
+                        <textarea id="challenge" name="challenge" rows="3" placeholder="What's your biggest challenge with getting more sales?"></textarea>
+                    </div>
+                    <button type="submit" class="cta-button" style="width: 100%; font-size: 1.2rem; padding: 15px;">
+                        🔥 BOOK MY FREE STRATEGY CALL NOW! 🔥
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Audit Questions Data
+        const auditQuestions = [
+            {
+                question: "How many visitors does your website get per month?",
+                options: [
+                    { text: "Less than 1,000 visitors", score: 1 },
+                    { text: "1,000 - 5,000 visitors", score: 3 },
+                    { text: "5,000 - 10,000 visitors", score: 5 },
+                    { text: "More than 10,000 visitors", score: 7 }
+                ]
+            },
+            {
+                question: "What's your current conversion rate (visitors to customers)?",
+                options: [
+                    { text: "I have no idea", score: 1 },
+                    { text: "Less than 1%", score: 2 },
+                    { text: "1% - 3%", score: 5 },
+                    { text: "More than 3%", score: 8 }
+                ]
+            },
+            {
+                question: "Do you have a clear call-to-action on your homepage?",
+                options: [
+                    { text: "What's a call-to-action?", score: 1 },
+                    { text: "I think so, but I'm not sure", score: 3 },
+                    { text: "Yes, but it's not very prominent", score: 5 },
+                    { text: "Yes, it's clear and prominent", score: 8 }
+                ]
+            },
+            {
+                question: "How do you currently capture visitor information?",
+                options: [
+                    { text: "I don't capture any information", score: 1 },
+                    { text: "Just a contact form", score: 3 },
+                    { text: "Email signup with a basic offer", score: 6 },
+                    { text: "Multiple lead magnets and opt-ins", score: 9 }
+                ]
+            },
+            {
+                question: "Do you follow up with visitors who don't buy immediately?",
+                options: [
+                    { text: "No, once they leave, they're gone", score: 1 },
+                    { text: "I send occasional newsletters", score: 4 },
+                    { text: "I have a basic email sequence", score: 7 },
+                    { text: "I have automated follow-up sequences", score: 10 }
+                ]
+            },
+            {
+                question: "How do you handle objections and build trust?",
+                options: [
+                    { text: "I don't really address objections", score: 1 },
+                    { text: "I have some testimonials", score: 4 },
+                    { text: "I have testimonials and guarantees", score: 7 },
+                    { text: "I have social proof, guarantees, and FAQ", score: 10 }
+                ]
+            },
+            {
+                question: "What happens after someone makes a purchase?",
+                options: [
+                    { text: "They get their product and that's it", score: 2 },
+                    { text: "I send a thank you email", score: 4 },
+                    { text: "I have a basic onboarding process", score: 7 },
+                    { text: "I have upsells and a complete customer journey", score: 10 }
+                ]
+            },
+            {
+                question: "How do you measure and optimize your sales process?",
+                options: [
+                    { text: "I don't track anything", score: 1 },
+                    { text: "I check sales numbers occasionally", score: 3 },
+                    { text: "I track basic metrics like traffic and sales", score: 6 },
+                    { text: "I track everything and test regularly", score: 10 }
+                ]
+            }
+        ];
+
+        // Audit Logic
+        let currentQuestion = 0;
+        let totalScore = 0;
+        let answers = [];
+        let timerMinutes = 15;
+        let timerSeconds = 0;
+        let timerInterval;
+
+        function initializeAudit() {
+            renderQuestion();
+            startTimer();
+        }
+
+        function renderQuestion() {
+            const questionsContainer = document.getElementById('auditQuestions');
+            const question = auditQuestions[currentQuestion];
+            
+            questionsContainer.innerHTML = `
+                <div class="question active">
+                    <h3>Question ${currentQuestion + 1} of ${auditQuestions.length}</h3>
+                    <h3>${question.question}</h3>
+                    <div class="options">
+                        ${question.options.map((option, index) => `
+                            <div class="option" onclick="selectOption(${index}, ${option.score})">
+                                ${option.text}
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+            
+            updateProgress();
+        }
+
+        function selectOption(optionIndex, score) {
+            // Remove previous selection
+            document.querySelectorAll('.option').forEach(opt => opt.classList.remove('selected'));
+            
+            // Add selection to clicked option
+            document.querySelectorAll('.option')[optionIndex].classList.add('selected');
+            
+            // Store answer
+            answers[currentQuestion] = { optionIndex, score };
+            totalScore += score;
+            
+            // Move to next question after a short delay
+            setTimeout(() => {
+                currentQuestion++;
+                if (currentQuestion < auditQuestions.length) {
+                    renderQuestion();
+                } else {
+                    showResults();
+                }
+            }, 500);
+        }
+
+        function updateProgress() {
+            const progress = ((currentQuestion) / auditQuestions.length) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+        }
+
+        function showResults() {
+            clearInterval(timerInterval);
+            document.getElementById('timer').style.display = 'none';
+            document.getElementById('auditQuestions').style.display = 'none';
+            
+            const scoreDisplay = document.getElementById('scoreDisplay');
+            const scoreNumber = document.getElementById('scoreNumber');
+            const personalizedContent = document.getElementById('personalizedContent');
+            
+            scoreDisplay.style.display = 'block';
+            scoreNumber.textContent = totalScore;
+            
+            // Personalized content based on score
+            let content = '';
+            let scoreCategory = '';
+            
+            if (totalScore <= 25) {
+                scoreCategory = 'CRITICAL';
+                scoreDisplay.style.background = 'linear-gradient(135deg, var(--danger-red) 0%, #c82333 100%)';
+                content = `
+                    <h3 style="color: var(--danger-red); margin-bottom: 20px;">🚨 CRITICAL: Your Funnel Needs IMMEDIATE Attention!</h3>
+                    <p><strong>The Reality:</strong> Your website is hemorrhaging money right now. You're losing 90%+ of potential customers.</p>
+                    <p><strong>The Cost:</strong> Every day you wait, you're losing thousands in potential revenue.</p>
+                    <p><strong>The Fix:</strong> You need a complete funnel overhaul - and you need it NOW!</p>
+                    <div class="action-plan-box critical-box">
+                        <h4>🎯 Your URGENT Action Plan:</h4>
+                        <ol>
+                            <li><strong>Set up proper visitor tracking immediately</strong> - You can't fix what you can't measure</li>
+                            <li><strong>Create a compelling lead magnet</strong> - Give visitors a reason to stay and engage</li>
+                            <li><strong>Install email capture systems</strong> - Start building your list TODAY</li>
+                            <li><strong>Design a clear customer journey</strong> - Guide visitors from interest to purchase</li>
+                        </ol>
+                        <p style="margin-top: 15px; font-weight: 600; color: var(--danger-red);">⚡ Priority: Book your strategy call NOW - every hour counts!</p>
+                    </div>
+                `;
+            } else if (totalScore <= 45) {
+                scoreCategory = 'NEEDS WORK';
+                scoreDisplay.style.background = 'linear-gradient(135deg, var(--warning-yellow) 0%, #e0a800 100%)';
+                content = `
+                    <h3 style="color: #856404; margin-bottom: 20px;">⚠️ Your Funnel Has Serious Gaps!</h3>
+                    <p><strong>The Good News:</strong> You have some basics in place.</p>
+                    <p><strong>The Bad News:</strong> You're still losing 70%+ of potential customers due to funnel gaps.</p>
+                    <p><strong>The Opportunity:</strong> Small fixes could DOUBLE your sales!</p>
+                    <div class="action-plan-box warning-box">
+                        <h4>🚀 Your Quick Win Strategy:</h4>
+                        <ol>
+                            <li><strong>Optimize your call-to-action buttons</strong> - Make them impossible to miss</li>
+                            <li><strong>Add social proof and testimonials</strong> - Build trust with your visitors</li>
+                            <li><strong>Create an email follow-up sequence</strong> - Nurture leads who aren't ready to buy</li>
+                            <li><strong>Implement upsell opportunities</strong> - Increase average order value</li>
+                        </ol>
+                        <p style="margin-top: 15px; font-weight: 600; color: #856404;">💡 These fixes could increase your revenue by 50-100% in 30 days!</p>
+                    </div>
+                `;
+            } else if (totalScore <= 65) {
+                scoreCategory = 'GOOD FOUNDATION';
+                scoreDisplay.style.background = 'linear-gradient(135deg, var(--electric-blue) 0%, #0056cc 100%)';
+                content = `
+                    <h3 style="color: var(--electric-blue); margin-bottom: 20px;">💪 You're On The Right Track!</h3>
+                    <p><strong>Great Job:</strong> You have a solid foundation in place.</p>
+                    <p><strong>The Opportunity:</strong> You're probably converting 3-5% of visitors, but you could be doing 8-12%!</p>
+                    <p><strong>The Next Level:</strong> Advanced optimization could triple your profits!</p>
+                    <div class="action-plan-box success-box">
+                        <h4>📈 Your Growth Accelerator Plan:</h4>
+                        <ol>
+                            <li><strong>A/B test your high-traffic pages</strong> - Optimize what's already working</li>
+                            <li><strong>Implement advanced segmentation</strong> - Personalize the experience</li>
+                            <li><strong>Add retargeting campaigns</strong> - Bring back lost visitors</li>
+                            <li><strong>Create multiple customer journeys</strong> - Different paths for different customers</li>
+                        </ol>
+                        <p style="margin-top: 15px; font-weight: 600; color: var(--electric-blue);">🎯 Goal: Take your conversion rate from good to EXCEPTIONAL!</p>
+                    </div>
+                `;
+            } else {
+                scoreCategory = 'FUNNEL MASTER';
+                scoreDisplay.style.background = 'linear-gradient(135deg, var(--success-green) 0%, #20c997 100%)';
+                content = `
+                    <h3 style="color: var(--success-green); margin-bottom: 20px;">🏆 CONGRATULATIONS! You're a Funnel MASTER!</h3>
+                    <p><strong>Impressive:</strong> You're in the top 5% of businesses with your funnel sophistication!</p>
+                    <p><strong>Your Edge:</strong> You're probably converting 8%+ of visitors - that's incredible!</p>
+                    <p><strong>The Next Level:</strong> Let's talk about scaling and advanced strategies!</p>
+                    <div class="action-plan-box vip-box">
+                        <h4>👑 VIP Scaling Strategy Session:</h4>
+                        <p>You don't need basic funnel fixes - you need advanced scaling strategies. Let's discuss:</p>
+                        <ul style="margin-top: 15px;">
+                            <li><strong>Multi-channel funnel integration</strong> - Seamless omnichannel experience</li>
+                            <li><strong>Advanced lifetime value optimization</strong> - Maximize customer relationships</li>
+                            <li><strong>Predictive analytics implementation</strong> - Data-driven decision making</li>
+                            <li><strong>Partnership and affiliate strategies</strong> - Exponential growth opportunities</li>
+                        </ul>
+                        <p style="margin-top: 15px; font-weight: 600; color: #b8860b;">🚀 You're ready for enterprise-level strategies that could 10x your business!</p>
+                    </div>
+                `;
+            }
+            
+            personalizedContent.innerHTML = content;
+            personalizedContent.style.display = 'block';
+            
+            // Show booking section
+            setTimeout(() => {
+                document.getElementById('booking').classList.remove('hidden');
+                document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
+            }, 2000);
+        }
+
+        function startTimer() {
+            timerInterval = setInterval(() => {
+                if (timerSeconds === 0) {
+                    if (timerMinutes === 0) {
+                        // Time's up - give 60 more seconds
+                        if (timerMinutes === 0 && timerSeconds === 0) {
+                            timerMinutes = 1;
+                            timerSeconds = 0;
+                            document.getElementById('timer').innerHTML = '⚠️ BONUS: 1:00';
+                            document.getElementById('timer').style.background = 'var(--danger-red)';
+                        } else {
+                            // Force to booking
+                            clearInterval(timerInterval);
+                            document.getElementById('booking').classList.remove('hidden');
+                            document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
+                            return;
+                        }
+                    } else {
+                        timerMinutes--;
+                        timerSeconds = 59;
+                    }
+                } else {
+                    timerSeconds--;
+                }
+                
+                const displayMinutes = timerMinutes.toString().padStart(2, '0');
+                const displaySeconds = timerSeconds.toString().padStart(2, '0');
+                document.getElementById('timer').innerHTML = `⏰ ${displayMinutes}:${displaySeconds}`;
+            }, 1000);
+        }
+
+        // Form submission
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Collect form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Add audit score to submission
+            data.auditScore = totalScore;
+            data.auditAnswers = answers;
+            
+            // Here you would typically send to your backend
+            console.log('Form submitted:', data);
+            
+            // Show success message
+            alert('🎉 SUCCESS! Your strategy call has been booked. Check your email for confirmation details!');
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Initialize the audit when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeAudit();
+        });
+    </script>
+</body>
+</html>
+
